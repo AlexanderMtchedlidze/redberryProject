@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <script src="./general_information.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row justify-content-center mt-4">
+      <div class="col-6">
+        <div class="h4 pb-2 mb-4 border-bottom border-secondary d-flex justify-content-between">
+          <div>პირადი ინფო</div>
+          <div>1/3</div>
+        </div>
+        <div class="row mb-3 g-3">
+          <div class="col">
+            <label for="nameInput" class="form-label">სახელი</label>
+            <input type="text" id="nameInput" class="form-control" placeholder="ანზორ" aria-label="First name">
+            <div class="form-text">მინიმუმ ორი ასო, ქართული ასოები.</div>
+          </div>
+          <div class="col">
+            <label for="lastNameInput" class="form-label">გვარი</label>
+            <input type="text" id="lastNameInput" class="form-control" placeholder="მუმლაძე" aria-label="Last name">
+            <div class="form-text">მინიმუმ ორი ასო, ქართული ასოები</div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="formFile" class="form-label">პირადი ფოტოს ატვირთვა</label>
+          <input class="form-control" type="file" id="formFile">
+        </div>
+        <div class="mb-3">
+          <label for="aboutMe" class="form-label">ჩემ შესახებ (არასავალდებულო)</label>
+          <textarea class="form-control" id="about_me" rows="3" placeholder="ზოგადი ინფო შენ შესახებ"></textarea>
+        </div>
+      </div>
+      <div class="col-4">
+        <div id="firstName"></div>
+        <div id="lastName"></div>
+        <div id="aboutMe"></div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
