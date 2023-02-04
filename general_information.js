@@ -5,52 +5,42 @@ document.addEventListener("DOMContentLoaded", () => {
     let emailInput = document.getElementById("emailInput");
     let aboutMeInput = document.getElementById("aboutMeInput");
     let telInput = document.getElementById("telInput");
-    let submit = document.getElementById("submit");
+    let next = document.getElementById("submit");
     nameInput.addEventListener("input", firstNameValidation);
     lastNameInput.addEventListener("input", lastNameValidation);
     fileInput.addEventListener("change", fileInputValidation);
     emailInput.addEventListener("input", emailValidation);
     telInput.addEventListener("input", telValidation);
     aboutMeInput.addEventListener("input", aboutMeValidation);
-        
-    submit.disabled = true;
 })
 
 function firstNameValidation(e) {
     let text = e.target.value;
     let firstName = document.getElementById("resumeFirstName");
 
-    let validation = nameValidation(text);
+    let validationResult = nameValidation(text);
 
     firstName.innerHTML = text;
 
-    if (validation) {
-        e.target.classList.remove("error");
-    } else {
-        e.target.classList.add("error");
-    }
+    inputValidation(e, validationResult);
 }
 
 function lastNameValidation(e) {
     let text = e.target.value;
 
-    nameValidation(text);
+    let validationResult = nameValidation(text);
 
     let lastName = document.getElementById("resumeLastName");
 
-    let validation = nameValidation(text);
-
     lastName.innerHTML = text;
 
-    if (validation) {
-
-    }
+    inputValidation(e, validationResult);
 }
 
 function nameValidation(text) {
     let language = isGeorgianLanguage(text);
 
-    if (text.length > 1 && language == "ka") {
+    if (text.length > 1 && language) {
         return true;
     }
     return false;
@@ -71,11 +61,9 @@ function emailValidation(e) {
 
     let atIndex = email.indexOf("@");
     let domain = email.substring(atIndex + 1);
-    if (domain !== "redberry.ge") {
-
-    }
-
+    let validationResult = domain === "redberry.ge";
     let envelopeIcon = document.getElementById("envelopeIcon");
+    inputValidation(e, validationResult);
 
     if (email.length > 0) {
         envelopeIcon.style.display = "unset";
@@ -89,8 +77,8 @@ function aboutMeValidation(e) {
     let resumeAboutMe = document.getElementById("resumeAboutMe");
     resumeAboutMe.innerHTML = aboutMe;
     let resumeAboutMeTitle = document.getElementById("resumeAboutMeTitle");
-
-    if (aboutMe.trim().length > 0) {
+    let validationResult = aboutMe.trim().length > 0;
+    if (validationResult) {
         resumeAboutMeTitle.style.display = "unset";
     } else {
         resumeAboutMeTitle.style.display = "none";
@@ -103,21 +91,22 @@ function telValidation(e) {
     resumeTel.innerHTML = tel;
     
     let telIcon = document.getElementById("telIcon");
+    let validationResult = isGeorgianMobileNumber(tel);
+    inputValidation(e, validationResult);
+
     if (tel.trim().length > 0) {
         telIcon.style.display = "block";
     } else {
         telIcon.style.display = "none";
     }
-
-    let validation = isGeorgianMobileNumber(tel);
 }
 
 function isGeorgianLanguage(text) {
     var sample = /[ა-ჰ]+/;
     if (sample.test(text)) {
-        return "ka";
+        return true;
     }
-    return "unknown";
+    return false;
 }
 
 function isGeorgianMobileNumber(number) {
@@ -127,4 +116,20 @@ function isGeorgianMobileNumber(number) {
         number.charAt(2) !== '9' || number.charAt(3) !== '5') return false;
 
     return true;
+}
+
+function inputValidation(e, validationResult) {
+    if (validationResult) {
+        removeValidationError(e);
+    } else {
+        addValidationError(e);
+    }
+}
+
+function addValidationError(e) {
+    e.target.classList.add("error")
+}
+
+function removeValidationError(e) {
+    e.target.classList.remove("error");
 }
