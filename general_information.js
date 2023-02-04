@@ -2,12 +2,14 @@ document.addEventListener("DOMContentLoaded", () => {
     let nameInput = document.getElementById("nameInput");
     let lastNameInput = document.getElementById("lastNameInput");
     let emailInput = document.getElementById("emailInput");
+    let aboutMeInput = document.getElementById("aboutMeInput");
     let telInput = document.getElementById("telInput");
     let submit = document.getElementById("submit");
     nameInput.addEventListener("input", firstNameValidation);
     lastNameInput.addEventListener("input", lastNameValidation);
     emailInput.addEventListener("input", emailValidation);
     telInput.addEventListener("input", telValidation);
+    aboutMeInput.addEventListener("input", aboutMeValidation);
         
     submit.disabled = true;
 })
@@ -54,11 +56,34 @@ function nameValidation(text) {
 
 function emailValidation(e) {
     let email = e.target.value;
+    let resumeEmail = document.getElementById("resumeEmail");
+    resumeEmail.innerHTML = email;
+
     let atIndex = email.indexOf("@");
     let domain = email.substring(atIndex + 1);
-
     if (domain !== "redberry.ge") {
 
+    }
+
+    let envelopeIcon = document.getElementById("envelopeIcon");
+
+    if (email.length > 0) {
+        envelopeIcon.style.display = "unset";
+    } else {
+        envelopeIcon.style.display = "none";
+    }
+}
+
+function aboutMeValidation(e) {
+    let aboutMe = e.target.value
+    let resumeAboutMe = document.getElementById("resumeAboutMe");
+    resumeAboutMe.innerHTML = aboutMe;
+    let resumeAboutMeTitle = document.getElementById("resumeAboutMeTitle");
+
+    if (aboutMe.trim().length > 0) {
+        resumeAboutMeTitle.style.display = "unset";
+    } else {
+        resumeAboutMeTitle.style.display = "none";
     }
 }
 
@@ -66,6 +91,13 @@ function telValidation(e) {
     let tel = e.target.value;
     let resumeTel = document.getElementById("resumeTel");
     resumeTel.innerHTML = tel;
+    
+    let telIcon = document.getElementById("telIcon");
+    if (tel.trim().length > 0) {
+        telIcon.style.display = "block";
+    } else {
+        telIcon.style.display = "none";
+    }
 
     let validation = isGeorgianMobileNumber(tel);
 }
