@@ -1,12 +1,14 @@
 document.addEventListener("DOMContentLoaded", () => {
     let nameInput = document.getElementById("nameInput");
     let lastNameInput = document.getElementById("lastNameInput");
+    let fileInput = document.getElementById("formFile");
     let emailInput = document.getElementById("emailInput");
     let aboutMeInput = document.getElementById("aboutMeInput");
     let telInput = document.getElementById("telInput");
     let submit = document.getElementById("submit");
     nameInput.addEventListener("input", firstNameValidation);
     lastNameInput.addEventListener("input", lastNameValidation);
+    fileInput.addEventListener("change", fileInputValidation);
     emailInput.addEventListener("input", emailValidation);
     telInput.addEventListener("input", telValidation);
     aboutMeInput.addEventListener("input", aboutMeValidation);
@@ -52,6 +54,14 @@ function nameValidation(text) {
         return true;
     }
     return false;
+}
+
+function fileInputValidation(e) {
+    let resumeImage = document.getElementById("resumeImage");
+    let imageFile = e.target.files[0];
+    let imageUrl = URL.createObjectURL(imageFile);
+    resumeImage.style.display = "unset";
+    resumeImage.src = imageUrl;
 }
 
 function emailValidation(e) {
