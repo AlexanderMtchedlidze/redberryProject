@@ -3,10 +3,13 @@ document.addEventListener("DOMContentLoaded", () => {
     let lastNameInput = document.getElementById("lastNameInput");
     let emailInput = document.getElementById("emailInput");
     let telInput = document.getElementById("telInput");
+    let submit = document.getElementById("submit");
     nameInput.addEventListener("input", firstNameValidation);
     lastNameInput.addEventListener("input", lastNameValidation);
     emailInput.addEventListener("input", emailValidation);
     telInput.addEventListener("input", telValidation);
+        
+    submit.disabled = true;
 })
 
 function firstNameValidation(e) {
@@ -18,7 +21,9 @@ function firstNameValidation(e) {
     firstName.innerHTML = text;
 
     if (validation) {
-
+        e.target.classList.remove("error");
+    } else {
+        e.target.classList.add("error");
     }
 }
 
