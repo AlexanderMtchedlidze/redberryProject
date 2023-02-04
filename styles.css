@@ -4,6 +4,7 @@
 }
 
 body {
+    overflow: hidden;
     font-family: 'HalveticaNeue', sans-serif;
 }
 
@@ -15,4 +16,4 @@ body {
 .go-back-icon {
     height: 30px;
     width: 30px;
-}
+}   

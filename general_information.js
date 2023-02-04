@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function firstNameValidation(e) {
     let text = e.target.value;
-    let firstName = document.getElementById("firstName");
+    let firstName = document.getElementById("resumeFirstName");
 
     let validation = nameValidation(text);
 
@@ -32,7 +32,7 @@ function lastNameValidation(e) {
 
     nameValidation(text);
 
-    let lastName = document.getElementById("lastName");
+    let lastName = document.getElementById("resumeLastName");
 
     let validation = nameValidation(text);
 
@@ -64,8 +64,10 @@ function emailValidation(e) {
 
 function telValidation(e) {
     let tel = e.target.value;
+    let resumeTel = document.getElementById("resumeTel");
+    resumeTel.innerHTML = tel;
+
     let validation = isGeorgianMobileNumber(tel);
-    console.log(validation);
 }
 
 function isGeorgianLanguage(text) {
