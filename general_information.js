@@ -23,6 +23,7 @@ function firstNameValidation(e) {
     firstName.innerHTML = text;
 
     inputValidation(e, validationResult);
+
 }
 
 function lastNameValidation(e) {
@@ -127,9 +128,11 @@ function inputValidation(e, validationResult) {
 }
 
 function addValidationError(e) {
-    e.target.classList.add("error")
+    e.target.classList.remove("is-valid");
+    e.target.classList.add("is-invalid");
 }
 
 function removeValidationError(e) {
-    e.target.classList.remove("error");
+    e.target.classList.remove("is-invalid");
+    e.target.classList.add("is-valid");
 }

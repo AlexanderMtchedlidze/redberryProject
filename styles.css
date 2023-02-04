@@ -18,11 +18,6 @@ body {
     width: 30px;
 }
 
-#bootstrap-overrides .error {
-    border-color: #FF0000;
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6);
-}
-
 .background-absolute-image {
     position: absolute;
     width: 299px;
@@ -32,7 +27,7 @@ body {
 }
 
 .index-page {
-    background-image: url(shutterstock.png)
+    background-image: url(media/shutterstock.png)
 }
 
 .next-button, .next-button:hover, .next-button:active, .next-button:visited {
