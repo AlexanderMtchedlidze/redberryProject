@@ -2,9 +2,11 @@ document.addEventListener("DOMContentLoaded", () => {
     let nameInput = document.getElementById("nameInput");
     let lastNameInput = document.getElementById("lastNameInput");
     let emailInput = document.getElementById("emailInput");
+    let telInput = document.getElementById("telInput");
     nameInput.addEventListener("input", firstNameValidation);
     lastNameInput.addEventListener("input", lastNameValidation);
     emailInput.addEventListener("input", emailValidation);
+    telInput.addEventListener("input", telValidation);
 })
 
 function firstNameValidation(e) {
@@ -33,14 +35,13 @@ function lastNameValidation(e) {
 
     if (validation) {
 
-    } 
+    }
 }
 
 function nameValidation(text) {
-    let language = detectLanguage(text);
-    console.log(language)
+    let language = isGeorgianLanguage(text);
 
-    if (text.length > 2 && language == "ka") {
+    if (text.length > 1 && language == "ka") {
         return true;
     }
     return false;
@@ -56,10 +57,25 @@ function emailValidation(e) {
     }
 }
 
-function detectLanguage(text) {
+function telValidation(e) {
+    let tel = e.target.value;
+    let validation = isGeorgianMobileNumber(tel);
+    console.log(validation);
+}
+
+function isGeorgianLanguage(text) {
     var sample = /[ა-ჰ]+/;
     if (sample.test(text)) {
-      return "ka";
+        return "ka";
     }
     return "unknown";
-  }
+}
+
+function isGeorgianMobileNumber(number) {
+    var extracted = number.replace(/\D/g, '');
+    if (extracted.length !== 12) return false;
+    if (number.charAt(0) !== '+' || number.charAt(1) !== '9' ||
+        number.charAt(2) !== '9' || number.charAt(3) !== '5') return false;
+
+    return true;
+}
