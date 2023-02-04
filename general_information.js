@@ -1,8 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
     let nameInput = document.getElementById("nameInput");
     let lastNameInput = document.getElementById("lastNameInput");
+    let emailInput = document.getElementById("emailInput");
     nameInput.addEventListener("input", firstNameValidation);
     lastNameInput.addEventListener("input", lastNameValidation);
+    emailInput.addEventListener("input", emailValidation);
 })
 
 function firstNameValidation(e) {
@@ -11,8 +13,10 @@ function firstNameValidation(e) {
 
     let validation = nameValidation(text);
 
+    firstName.innerHTML = text;
+
     if (validation) {
-        firstName.innerHTML = text
+
     }
 }
 
@@ -25,14 +29,37 @@ function lastNameValidation(e) {
 
     let validation = nameValidation(text);
 
+    lastName.innerHTML = text;
+
     if (validation) {
-        lastName.innerHTML = text
-    }
+
+    } 
 }
 
 function nameValidation(text) {
-    if (text.length > 2) {
+    let language = detectLanguage(text);
+    console.log(language)
+
+    if (text.length > 2 && language == "ka") {
         return true;
     }
     return false;
 }
+
+function emailValidation(e) {
+    let email = e.target.value;
+    let atIndex = email.indexOf("@");
+    let domain = email.substring(atIndex + 1);
+
+    if (domain !== "redberry.ge") {
+
+    }
+}
+
+function detectLanguage(text) {
+    var sample = /[ა-ჰ]+/;
+    if (sample.test(text)) {
+      return "ka";
+    }
+    return "unknown";
+  }
