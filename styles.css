@@ -1,0 +1,18 @@
+@font-face {
+    font-family: 'HalveticaNeue';
+    src: url('./HelveticaNeue.ttc') format('truetype');
+}
+
+body {
+    font-family: 'HalveticaNeue', sans-serif;
+}
+
+#bootstrap-overrides .landing-page-button {
+    background-color: black;
+    width: 350px;
+}
+
+.go-back-icon {
+    height: 30px;
+    width: 30px;
+}
