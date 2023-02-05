@@ -15,12 +15,12 @@
 <body id="bootstrap-overrides">
   <div class="container mt-4 p-2">
     <div class="row">
-      <div class="col-lg-1 d-flex justify-content-center">
+      <div class="col-xl-1 d-flex justify-content-center">
         <a href="index.html">
           <img src="media/arrow-left-circle.svg" alt="icon" class="go-back-icon">
         </a>
       </div>
-      <div class="col-lg-6 p-2">
+      <div class="col-xl-6 p-2">
         <form>
           <div class="h4 pb-2 mb-4 border-bottom border-secondary d-flex justify-content-between">
             <div>პირადი ინფო</div>
@@ -40,7 +40,7 @@
           </div>
           <div class="mb-4">
             <label for="formFile" class="form-label">პირადი ფოტოს ატვირთვა</label>
-            <input class="form-control" type="file" id="formFile">
+            <input class="form-control" type="file" id="formFile" required>
           </div>
           <div class="mb-4">
             <label for="aboutMeInput" class="form-label">ჩემ შესახებ (არასავალდებულო)</label>
@@ -61,27 +61,30 @@
           </div>
         </form>
       </div>
-      <div class="col-lg-5 p-2">
-        <div class="container border-bottom bottom-secondary p-2">
-          <div class="row" style="overflow-y: scroll; height: 100vh;">
+      <div class="col-xl-5 p-2">
+        <div class="container p-2">
+          <div class="row resume">
             <div class="col">
-              <div class="row h2">
+              <div class="d-flex resume-name">
                 <div class="col" id="resumeFirstName"></div>
-                <div class="col" id="resumeLastName"></div>
+                <div class="col" id="resumeLastName" style="margin-left: 10px"></div>
               </div>
-              <div class="d-flex">
-                <img src="media/telephone.svg" alt="telephone" style="display: none;" id="telIcon">
-                <div class="col" id="resumeTel" style="margin-left: 6px;"></div>
+              <div class="d-flex resume-contanct">
+                <img src="media/Vector-2.svg" alt="telephone" style="display: none;" id="telIcon" class="resume-icon">
+                <div class="col" id="resumeTel"></div>
               </div>
-              <div class="d-flex">
-                <img src="media/envelope.svg" alt="envelope" style="display: none;" id="envelopeIcon">
-                <div class="col" id="resumeEmail" style="margin-left: 6px;"></div>
+              <div class="d-flex resume-contact" style="margin-bottom: 20px;">
+                <img src="media/Vector.svg" alt="envelope" style="display: none;" id="envelopeIcon" class="resume-icon">
+                <div class="col" id="resumeEmail"></div>
               </div>
-              <h4 id="resumeAboutMeTitle" style="display: none; margin-top: 10px;">ჩემ შესახებ</h4>
-              <div class="col" id="resumeAboutMe"></div>
+              <div>
+                <h4 id="resumeAboutMeTitle">ჩემ შესახებ</h4>
+                <div class="col" id="resumeAboutMe"></div>
+              </div>
             </div>
             <div class="col">
-              <img width="150px" alt="resumeImage" id="resumeImage" style="display: none;">
+              <img width="200px" height="200px" alt="resumeImage" id="resumeImage" style="display: none;"
+                class="rounded-circle">
             </div>
           </div>
         </div>

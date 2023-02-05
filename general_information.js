@@ -23,7 +23,6 @@ function firstNameValidation(e) {
     firstName.innerHTML = text;
 
     inputValidation(e, validationResult);
-
 }
 
 function lastNameValidation(e) {
