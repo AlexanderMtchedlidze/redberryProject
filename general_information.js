@@ -17,6 +17,8 @@ document.addEventListener("DOMContentLoaded", () => {
         retrieveFirstName(nameInput);
         retrieveLastName(lastNameInput);
         retrieveAboutMe(aboutMeInput);
+        retrieveTel(telInput);
+        retrieveEmail(emailInput);
     }
 })
 
@@ -43,6 +45,30 @@ function retrieveAboutMe(aboutMeInput) {
     resumeAboutMe.innerHTML = aboutMe;
     if (aboutMeValidation) {
         resumeAboutMeTitle.style.display = "unset"
+    }
+}
+
+function retrieveTel(telInput) {
+    let tel = localStorage.getItem("resumeTel");
+    let telValidation = localStorage.getItem("resumeTelValidation");
+    let resumeTel = document.getElementById("resumeTel");
+    let telIcon = document.getElementById("telIcon");
+    telInput.value = tel;
+    resumeTel.innerHTML = tel;
+    if (telValidation) {
+        telIcon.style.display = "block";
+    }
+}
+
+function retrieveEmail(emailInput) {
+    let email = localStorage.getItem("resumeEmail");
+    let emailValidation = localStorage.getItem("resumeEmailValidation");
+    let resumeEmail = document.getElementById("resumeEmail");
+    let envelopeIcon = document.getElementById("envelopeIcon");
+    emailInput.value = email;
+    resumeEmail.innerHTML = email;
+    if (emailValidation) {
+        envelopeIcon.style.display = "block";
     }
 }
 
@@ -100,9 +126,11 @@ function emailValidation(e) {
     let validationResult = domain === "redberry.ge";
     let envelopeIcon = document.getElementById("envelopeIcon");
     inputValidation(e, validationResult);
+    let lengthValidation = email.length > 0;
     localStorage.setItem("resumeEmail", email);
-
-    if (email.length > 0) {
+    localStorage.setItem("resumeEmailValidation", lengthValidation);
+    
+    if (lengthValidation) {
         envelopeIcon.style.display = "unset";
     } else {
         envelopeIcon.style.display = "none";
@@ -132,13 +160,16 @@ function telValidation(e) {
     let telIcon = document.getElementById("telIcon");
     let validationResult = isGeorgianMobileNumber(tel);
     inputValidation(e, validationResult);
-    localStorage.setItem("resumeTel", tel);
-
-    if (tel.trim().length > 0) {
+    let lengthValidation = tel.trim().length > 0;
+    
+    if (lengthValidation) {
         telIcon.style.display = "block";
     } else {
         telIcon.style.display = "none";
     }
+
+    localStorage.setItem("resumeTelValidation", lengthValidation);
+    localStorage.setItem("resumeTel", tel);
 }
 
 function isGeorgianLanguage(text) {
