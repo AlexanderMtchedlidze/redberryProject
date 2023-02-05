@@ -1,26 +1,40 @@
 document.addEventListener("DOMContentLoaded", () => {
+    let goBack = document.getElementById("goBack");
     let nameInput = document.getElementById("nameInput");
     let lastNameInput = document.getElementById("lastNameInput");
     let fileInput = document.getElementById("formFile");
     let emailInput = document.getElementById("emailInput");
     let aboutMeInput = document.getElementById("aboutMeInput");
     let telInput = document.getElementById("telInput");
-    let next = document.getElementById("submit");
+    let next = document.getElementById("toExperienceButton");
     nameInput.addEventListener("input", firstNameValidation);
     lastNameInput.addEventListener("input", lastNameValidation);
     fileInput.addEventListener("change", fileInputValidation);
     emailInput.addEventListener("input", emailValidation);
     telInput.addEventListener("input", telValidation);
     aboutMeInput.addEventListener("input", aboutMeValidation);
-    next.disabled = true;
+    goBack.addEventListener("click", clearLocalStorage);
     window.onload = () => {
         retrieveFirstName(nameInput);
         retrieveLastName(lastNameInput);
+        retrieveImage();
         retrieveAboutMe(aboutMeInput);
         retrieveTel(telInput);
         retrieveEmail(emailInput);
     }
+    next.addEventListener("click", preventExperienceNav);
 })
+
+function clearLocalStorage() {
+    localStorage.clear();
+}
+
+function preventExperienceNav(e) {
+    condition = true;
+    if (!condition) {
+        e.preventDefault();
+    }
+}
 
 function retrieveFirstName(nameInput) {
     let firstName = localStorage.getItem("resumeFirstName");
@@ -36,14 +50,22 @@ function retrieveLastName(lastNameInput) {
     resumeLastName.innerHTML = lastName;
 }
 
+function retrieveImage() {
+    let base64Image = localStorage.getItem('base64Image');
+    if (base64Image) {
+        resumeImage = document.getElementById('resumeImage');
+        resumeImage.style.display = "unset";
+        resumeImage.src = base64Image
+    }
+}
+
 function retrieveAboutMe(aboutMeInput) {
     let aboutMe = localStorage.getItem("resumeAboutMe");
-    let aboutMeValidation = localStorage.getItem("resumeAboutMeLength");
     let resumeAboutMe = document.getElementById("resumeAboutMe");
     let resumeAboutMeTitle = document.getElementById("resumeAboutMeTitle");
     aboutMeInput.value = aboutMe;
     resumeAboutMe.innerHTML = aboutMe;
-    if (aboutMeValidation) {
+    if (aboutMe.trim().length > 0) {
         resumeAboutMeTitle.style.display = "unset"
     }
 }
@@ -114,6 +136,13 @@ function fileInputValidation(e) {
     let imageUrl = URL.createObjectURL(imageFile);
     resumeImage.style.display = "unset";
     resumeImage.src = imageUrl;
+
+    var fileReader = new FileReader();
+    fileReader.onload = function (fileLoadedEvent) {
+        var srcData = fileLoadedEvent.target.result;
+        localStorage.setItem("base64Image", srcData);
+    };
+    fileReader.readAsDataURL(imageFile);
 }
 
 function emailValidation(e) {
@@ -129,7 +158,7 @@ function emailValidation(e) {
     let lengthValidation = email.length > 0;
     localStorage.setItem("resumeEmail", email);
     localStorage.setItem("resumeEmailValidation", lengthValidation);
-    
+
     if (lengthValidation) {
         envelopeIcon.style.display = "unset";
     } else {
@@ -142,10 +171,9 @@ function aboutMeValidation(e) {
     let resumeAboutMe = document.getElementById("resumeAboutMe");
     resumeAboutMe.innerHTML = aboutMe;
     let resumeAboutMeTitle = document.getElementById("resumeAboutMeTitle");
-    let validationResult = aboutMe.trim().length > 0;
+    let lengthValidation = aboutMe.trim().length > 0;
     localStorage.setItem("resumeAboutMe", aboutMe);
-    localStorage.setItem("resumeAboutMeLength", validationResult);
-    if (validationResult) {
+    if (lengthValidation) {
         resumeAboutMeTitle.style.display = "unset";
     } else {
         resumeAboutMeTitle.style.display = "none";
@@ -161,7 +189,7 @@ function telValidation(e) {
     let validationResult = isGeorgianMobileNumber(tel);
     inputValidation(e, validationResult);
     let lengthValidation = tel.trim().length > 0;
-    
+
     if (lengthValidation) {
         telIcon.style.display = "block";
     } else {
