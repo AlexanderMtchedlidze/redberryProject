@@ -12,7 +12,39 @@ document.addEventListener("DOMContentLoaded", () => {
     emailInput.addEventListener("input", emailValidation);
     telInput.addEventListener("input", telValidation);
     aboutMeInput.addEventListener("input", aboutMeValidation);
+    next.disabled = true;
+    window.onload = () => {
+        retrieveFirstName(nameInput);
+        retrieveLastName(lastNameInput);
+        retrieveAboutMe(aboutMeInput);
+    }
 })
+
+function retrieveFirstName(nameInput) {
+    let firstName = localStorage.getItem("resumeFirstName");
+    let resumeFirstName = document.getElementById("resumeFirstName");
+    nameInput.value = firstName;
+    resumeFirstName.innerHTML = firstName;
+}
+
+function retrieveLastName(lastNameInput) {
+    let lastName = localStorage.getItem("resumeLastName");
+    let resumeLastName = document.getElementById("resumeLastName");
+    lastNameInput.value = lastName;
+    resumeLastName.innerHTML = lastName;
+}
+
+function retrieveAboutMe(aboutMeInput) {
+    let aboutMe = localStorage.getItem("resumeAboutMe");
+    let aboutMeValidation = localStorage.getItem("resumeAboutMeLength");
+    let resumeAboutMe = document.getElementById("resumeAboutMe");
+    let resumeAboutMeTitle = document.getElementById("resumeAboutMeTitle");
+    aboutMeInput.value = aboutMe;
+    resumeAboutMe.innerHTML = aboutMe;
+    if (aboutMeValidation) {
+        resumeAboutMeTitle.style.display = "unset"
+    }
+}
 
 function firstNameValidation(e) {
     let text = e.target.value;
@@ -23,6 +55,8 @@ function firstNameValidation(e) {
     firstName.innerHTML = text;
 
     inputValidation(e, validationResult);
+
+    localStorage.setItem("resumeFirstName", text);
 }
 
 function lastNameValidation(e) {
@@ -35,6 +69,8 @@ function lastNameValidation(e) {
     lastName.innerHTML = text;
 
     inputValidation(e, validationResult);
+
+    localStorage.setItem("resumeLastName", text);
 }
 
 function nameValidation(text) {
@@ -64,6 +100,7 @@ function emailValidation(e) {
     let validationResult = domain === "redberry.ge";
     let envelopeIcon = document.getElementById("envelopeIcon");
     inputValidation(e, validationResult);
+    localStorage.setItem("resumeEmail", email);
 
     if (email.length > 0) {
         envelopeIcon.style.display = "unset";
@@ -78,6 +115,8 @@ function aboutMeValidation(e) {
     resumeAboutMe.innerHTML = aboutMe;
     let resumeAboutMeTitle = document.getElementById("resumeAboutMeTitle");
     let validationResult = aboutMe.trim().length > 0;
+    localStorage.setItem("resumeAboutMe", aboutMe);
+    localStorage.setItem("resumeAboutMeLength", validationResult);
     if (validationResult) {
         resumeAboutMeTitle.style.display = "unset";
     } else {
@@ -89,10 +128,11 @@ function telValidation(e) {
     let tel = e.target.value;
     let resumeTel = document.getElementById("resumeTel");
     resumeTel.innerHTML = tel;
-    
+
     let telIcon = document.getElementById("telIcon");
     let validationResult = isGeorgianMobileNumber(tel);
     inputValidation(e, validationResult);
+    localStorage.setItem("resumeTel", tel);
 
     if (tel.trim().length > 0) {
         telIcon.style.display = "block";
