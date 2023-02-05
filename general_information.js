@@ -30,9 +30,35 @@ function clearLocalStorage() {
 }
 
 function preventExperienceNav(e) {
-    condition = true;
-    if (!condition) {
+    let nameInput = document.getElementById("nameInput");
+    let lastNameInput = document.getElementById("lastNameInput");
+    let firstNameVal = JSON.parse(localStorage.getItem("firstNameValidation"));
+    let lastNameVal = JSON.parse(localStorage.getItem("lastNameValidation"));
+    let emailInput = document.getElementById("emailInput");
+    let emailVal = JSON.parse(localStorage.getItem("emailValidation"));
+    let telInput = document.getElementById("telInput");
+    let telVal = JSON.parse(localStorage.getItem("telValidation"));
+    let fileInput = document.getElementById("formFile");
+    let fileValidation = JSON.parse(localStorage.getItem("imageValidation"));
+    if (!firstNameVal) {
         e.preventDefault();
+        nameInput.classList.add("is-invalid");
+    } 
+    if (!lastNameVal) {
+        e.preventDefault();
+        lastNameInput.classList.add("is-invalid");
+    }
+    if (!emailVal) {
+        e.preventDefault();
+        emailInput.classList.add("is-invalid");
+    }
+    if (!telVal) {
+        e.preventDefault();
+        telInput.classList.add("is-invalid");
+    }
+    if (!fileValidation) {
+        e.preventDefault();
+        fileInput.classList.add("is-invalid");
     }
 }
 
@@ -65,7 +91,7 @@ function retrieveAboutMe(aboutMeInput) {
     let resumeAboutMeTitle = document.getElementById("resumeAboutMeTitle");
     aboutMeInput.value = aboutMe;
     resumeAboutMe.innerHTML = aboutMe;
-    if (aboutMe.trim().length > 0) {
+    if (aboutMe != null && aboutMe.trim().length > 0) {
         resumeAboutMeTitle.style.display = "unset"
     }
 }
@@ -105,6 +131,7 @@ function firstNameValidation(e) {
     inputValidation(e, validationResult);
 
     localStorage.setItem("resumeFirstName", text);
+    localStorage.setItem("firstNameValidation", validationResult);
 }
 
 function lastNameValidation(e) {
@@ -115,6 +142,8 @@ function lastNameValidation(e) {
     let lastName = document.getElementById("resumeLastName");
 
     lastName.innerHTML = text;
+
+    localStorage.setItem("lastNameValidation", validationResult);
 
     inputValidation(e, validationResult);
 
@@ -143,6 +172,8 @@ function fileInputValidation(e) {
         localStorage.setItem("base64Image", srcData);
     };
     fileReader.readAsDataURL(imageFile);
+    e.target.classList.add("is-valid");
+    localStorage.setItem("imageValidation", true);
 }
 
 function emailValidation(e) {
@@ -158,6 +189,7 @@ function emailValidation(e) {
     let lengthValidation = email.length > 0;
     localStorage.setItem("resumeEmail", email);
     localStorage.setItem("resumeEmailValidation", lengthValidation);
+    localStorage.setItem("emailValidation", validationResult);
 
     if (lengthValidation) {
         envelopeIcon.style.display = "unset";
@@ -196,12 +228,13 @@ function telValidation(e) {
         telIcon.style.display = "none";
     }
 
+    localStorage.setItem("telValidation", validationResult);
     localStorage.setItem("resumeTelValidation", lengthValidation);
     localStorage.setItem("resumeTel", tel);
 }
 
 function isGeorgianLanguage(text) {
-    var sample = /[ა-ჰ]+/;
+    var sample = /^[ა-ჰ]+$/;
     if (sample.test(text)) {
         return true;
     }
@@ -220,8 +253,10 @@ function isGeorgianMobileNumber(number) {
 function inputValidation(e, validationResult) {
     if (validationResult) {
         removeValidationError(e);
+        return true;
     } else {
         addValidationError(e);
+        return false;
     }
 }
 
