@@ -1,0 +1,23 @@
+@font-face {
+    font-family: 'HalveticaNeue';
+    src: url('../font/HelveticaNeue.ttc');
+}
+
+body {
+    overflow: hidden;
+    font-family: 'HalveticaNeue';
+}
+
+.go-back-icon {
+    height: 30px;
+    width: 30px;
+}
+
+.next-button,
+.next-button:hover,
+.next-button:active,
+.next-button:visited {
+    width: 131px;
+    background-color: #8064A2 !important;
+    border: none !important;
+}

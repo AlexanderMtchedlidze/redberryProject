@@ -1,0 +1,17 @@
+#bootstrap-overrides .landing-page-button {
+    background-color: black;
+    width: 350px;
+}
+
+.background-absolute-image {
+    position: absolute;
+    width: 299px;
+    height: 299px;
+    left: 1076px;
+    top: 550px;
+}
+
+
+.index-page {
+    background-image: url(../media/shutterstock.png)
+}
