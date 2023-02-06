@@ -18,6 +18,10 @@ body {
 .next-button:active,
 .next-button:visited {
     width: 131px;
-    background-color: #8064A2 !important;
+    background-color: #6B40E3 !important;
     border: none !important;
+}
+
+.resume-title {
+    border-bottom: 1px solid black;
 }

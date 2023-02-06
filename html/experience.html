@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>General Information</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="../static/general_information.js"></script>
+    <script src="../static/retrieveData.js"></script>
+    <script src="../static/goBack.js"></script>
+    <link rel="stylesheet" href="../static/styles.css">
+    <link rel="stylesheet" href="../static/general_information.css">
+</head>
+
+<body id="bootstrap-overrides">
+    <div class="d-flex">
+        <div class="d-flex justify-content-center p-5 resume-input" style="width: 5%;">
+            <a href="index.html" style="height: 30px;">
+                <img src="../media/Vector.png" alt="vector" class="go-back-vector">
+                <img src="../media/Ellipse 1.png" alt="eclipse" class="go-back-icon" id="goBack" width="40px">
+            </a>
+        </div>
+        <div class="pt-5 pe-5 resume-input">
+            <form>
+                <div class="h4 pb-2 mb-4 d-flex justify-content-between resume-title" style="font-weight: 700;">
+                    <div>გამოცდილება</div>
+                    <div>2/3</div>
+                </div>
+                <div class="row mb-4 g-3">
+                    <div class="col">
+                        <label for="nameInput" class="form-label">სახელი</label>
+                        <input type="text" id="nameInput" class="form-control" placeholder="ანზორ"
+                            aria-label="First name">
+                        <div class="form-text">მინიმუმ ორი ასო, ქართული ასოები.</div>
+                    </div>
+                    <div class="col">
+                        <label for="lastNameInput" class="form-label">გვარი</label>
+                        <input type="text" id="lastNameInput" class="form-control" placeholder="მუმლაძე"
+                            aria-label="Last name">
+                        <div class="form-text">მინიმუმ ორი ასო, ქართული ასოები</div>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <label for="formFile" class="form-label">პირადი ფოტოს ატვირთვა</label>
+                    <input class="form-control" type="file" id="formFile" required>
+                </div>
+                <div class="mb-4">
+                    <label for="aboutMeInput" class="form-label">ჩემ შესახებ (არასავალდებულო)</label>
+                    <textarea class="form-control" id="aboutMeInput" rows="3"
+                        placeholder="ზოგადი ინფო შენ შესახებ"></textarea>
+                </div>
+                <div class="mb-4">
+                    <label for="emailInput" class="form-label">ელ. ფოსტა</label>
+                    <input type="email" class="form-control" id="emailInput" placeholder="anzormumladze@redberry.ge" />
+                    <div class="form-text">უნდა მთავრდებოდეს @redberry.ge-ით</div>
+                </div>
+                <div class="mb-5">
+                    <label for="telInput" class="form-label">მობილურის ნომერი</label>
+                    <input type="tel" class="form-control" id="telInput" placeholder="+995 551 12 34 56" />
+                    <div class="form-text">უნდა აკმაყოფილებდეს ქართული მობილური ნომერის ფორმატს.</div>
+                </div>
+                <div class="d-flex justify-content-between" id="submit">
+                    <a href="general_information.html" class="btn btn-primary next-button" id="toExperienceButton"
+                        role="button" aria-pressed="true">უკან</a>
+                    <a href="education.html" class="btn btn-primary next-button" id="toExperienceButton"
+                        role="button" aria-pressed="true" disabled>შემდეგი</a>
+                </div>
+            </form>
+        </div>
+        <div class="p-5">
+            <div class="d-flex resume">
+                <div>
+                    <div class="d-flex resume-name">
+                        <div class="col" id="resumeFirstName"></div>
+                        <div class="col" id="resumeLastName" style="margin-left: 10px"></div>
+                    </div>
+                    <div class="d-flex resume-contanct">
+                        <img src="../media/Vector-2.svg" alt="telephone" style="display: none;" id="telIcon"
+                            class="resume-icon">
+                        <div class="col" id="resumeTel"></div>
+                    </div>
+                    <div class="d-flex resume-contact" style="margin-bottom: 20px;">
+                        <img src="../media/Vector.svg" alt="envelope" style="display: none;" id="envelopeIcon"
+                            class="resume-icon">
+                        <div class="col" id="resumeEmail"></div>
+                    </div>
+                    <div>
+                        <h4 id="resumeAboutMeTitle" style="display:none;">ჩემ შესახებ</h4>
+                        <div class="col" id="resumeAboutMe"></div>
+                    </div>
+                </div>
+                <div>
+                    <img width="200px" height="200px" alt="resumeImage" id="resumeImage" style="display: none"
+                        class="rounded-circle">
+                </div>
+            </div>
+        </div>
+</body>
+
+</html>
