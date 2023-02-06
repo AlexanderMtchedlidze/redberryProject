@@ -21,9 +21,10 @@ function preventExperienceNav(e) {
     let firstNameVal = JSON.parse(localStorage.getItem("firstNameValidation"));
     let lastNameVal = JSON.parse(localStorage.getItem("lastNameValidation"));
     let emailInput = document.getElementById("emailInput");
-    let emailVal = JSON.parse(localStorage.getItem("emailValidation"));
+    let emailVal = JSON.parse(localStorage.getItem("resumeEmailValidation"));
+    console.log(emailVal)
     let telInput = document.getElementById("telInput");
-    let telVal = JSON.parse(localStorage.getItem("telValidation"));
+    let telVal = JSON.parse(localStorage.getItem("resumeTelValidation"));
     let fileInput = document.getElementById("formFile");
     let fileValidation = JSON.parse(localStorage.getItem("imageValidation"));
     if (!firstNameVal) {
@@ -121,7 +122,7 @@ function emailValidation(e) {
     } else {
         envelopeIcon.style.display = "none";
     }
-    localStorage.setItem("resumeEmailValidation", lengthValidation);
+    localStorage.setItem("resumeEmailValidation", validationResult);
     localStorage.setItem("resumeEmail", email);
 }
 
