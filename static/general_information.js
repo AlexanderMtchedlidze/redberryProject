@@ -172,6 +172,7 @@ function fileInputValidation(e) {
         localStorage.setItem("base64Image", srcData);
     };
     fileReader.readAsDataURL(imageFile);
+    e.target.classList.remove("is-invalid");
     e.target.classList.add("is-valid");
     localStorage.setItem("imageValidation", true);
 }
@@ -207,8 +208,10 @@ function aboutMeValidation(e) {
     localStorage.setItem("resumeAboutMe", aboutMe);
     if (lengthValidation) {
         resumeAboutMeTitle.style.display = "unset";
+        e.target.classList.add("is-valid");
     } else {
         resumeAboutMeTitle.style.display = "none";
+        e.target.classList.remove("is-valid");
     }
 }
 
