@@ -132,13 +132,14 @@ function aboutMeValidation(e) {
     resumeAboutMe.innerHTML = aboutMe;
     let resumeAboutMeTitle = document.getElementById("resumeAboutMeTitle");
     let lengthValidation = aboutMe.trim().length > 0;
+    console.log(lengthValidation)
     localStorage.setItem("resumeAboutMe", aboutMe);
     if (lengthValidation) {
         resumeAboutMeTitle.style.display = "unset";
         removeValidationError(e);
     } else {
         resumeAboutMeTitle.style.display = "none";
-        addValidationError(e);
+        e.target.classList.remove("is-valid");
     }
 }
 
