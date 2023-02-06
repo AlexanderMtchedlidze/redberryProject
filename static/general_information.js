@@ -29,7 +29,7 @@ function preventExperienceNav(e) {
     if (!firstNameVal) {
         e.preventDefault();
         nameInput.classList.add("is-invalid");
-    } 
+    }
     if (!lastNameVal) {
         e.preventDefault();
         lastNameInput.classList.add("is-invalid");
@@ -100,8 +100,7 @@ function fileInputValidation(e) {
         localStorage.setItem("base64Image", srcData);
     };
     fileReader.readAsDataURL(imageFile);
-    e.target.classList.remove("is-invalid");
-    e.target.classList.add("is-valid");
+    removeValidationError(e);
     localStorage.setItem("imageValidation", true);
 }
 
@@ -115,16 +114,15 @@ function emailValidation(e) {
     let validationResult = domain === "redberry.ge";
     let envelopeIcon = document.getElementById("envelopeIcon");
     inputValidation(e, validationResult);
-    let lengthValidation = email.length > 0;
-    localStorage.setItem("resumeEmail", email);
-    localStorage.setItem("resumeEmailValidation", lengthValidation);
-    localStorage.setItem("emailValidation", validationResult);
 
+    let lengthValidation = email.trim().length > 0;
     if (lengthValidation) {
         envelopeIcon.style.display = "unset";
     } else {
         envelopeIcon.style.display = "none";
     }
+    localStorage.setItem("resumeEmailValidation", lengthValidation);
+    localStorage.setItem("resumeEmail", email);
 }
 
 function aboutMeValidation(e) {
@@ -136,10 +134,10 @@ function aboutMeValidation(e) {
     localStorage.setItem("resumeAboutMe", aboutMe);
     if (lengthValidation) {
         resumeAboutMeTitle.style.display = "unset";
-        e.target.classList.add("is-valid");
+        removeValidationError(e);
     } else {
         resumeAboutMeTitle.style.display = "none";
-        e.target.classList.remove("is-valid");
+        addValidationError(e);
     }
 }
 
@@ -151,15 +149,14 @@ function telValidation(e) {
     let telIcon = document.getElementById("telIcon");
     let validationResult = isGeorgianMobileNumber(tel);
     inputValidation(e, validationResult);
+    
     let lengthValidation = tel.trim().length > 0;
-
     if (lengthValidation) {
         telIcon.style.display = "block";
     } else {
         telIcon.style.display = "none";
     }
 
-    localStorage.setItem("telValidation", validationResult);
     localStorage.setItem("resumeTelValidation", lengthValidation);
     localStorage.setItem("resumeTel", tel);
 }

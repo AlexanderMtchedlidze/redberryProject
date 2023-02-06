@@ -25,3 +25,16 @@ body {
 .resume-title {
     border-bottom: 1px solid black;
 }
+
+.custom-invalid {
+    border: 2px solid red;
+    padding: 4px;
+    background-image: url(../media/Vector-2.png);
+    background-repeat: no-repeat;
+    background-position: center right;
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+    margin-left: 10px;
+    vertical-align: middle;
+}

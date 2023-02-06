@@ -13,7 +13,9 @@ function retrieveFirstName() {
     let nameInput = document.getElementById("nameInput");
     let firstName = localStorage.getItem("resumeFirstName");
     let resumeFirstName = document.getElementById("resumeFirstName");
-    nameInput.value = firstName;
+    if (nameInput) {
+        nameInput.value = firstName;
+    }
     resumeFirstName.innerHTML = firstName;
 }
 
@@ -21,7 +23,9 @@ function retrieveLastName() {
     let lastNameInput = document.getElementById("lastNameInput");
     let lastName = localStorage.getItem("resumeLastName");
     let resumeLastName = document.getElementById("resumeLastName");
-    lastNameInput.value = lastName;
+    if (lastNameInput) {
+        lastNameInput.value = lastName;
+    }
     resumeLastName.innerHTML = lastName;
 }
 
@@ -39,7 +43,9 @@ function retrieveAboutMe() {
     let aboutMe = localStorage.getItem("resumeAboutMe");
     let resumeAboutMe = document.getElementById("resumeAboutMe");
     let resumeAboutMeTitle = document.getElementById("resumeAboutMeTitle");
-    aboutMeInput.value = aboutMe;
+    if (aboutMeInput) {
+        aboutMeInput.value = aboutMe;
+    }
     resumeAboutMe.innerHTML = aboutMe;
     if (aboutMe != null && aboutMe.trim().length > 0) {
         resumeAboutMeTitle.style.display = "unset"
@@ -49,12 +55,13 @@ function retrieveAboutMe() {
 function retrieveTel() {
     let telInput = document.getElementById("telInput");
     let tel = localStorage.getItem("resumeTel");
-    let telValidation = localStorage.getItem("resumeTelValidation");
     let resumeTel = document.getElementById("resumeTel");
     let telIcon = document.getElementById("telIcon");
-    telInput.value = tel;
+    if (telInput) {
+        telInput.value = tel;
+    }
     resumeTel.innerHTML = tel;
-    if (telValidation) {
+    if (tel && tel.trim().length > 0) {
         telIcon.style.display = "block";
     }
 }
@@ -62,12 +69,13 @@ function retrieveTel() {
 function retrieveEmail() {
     let emailInput = document.getElementById("emailInput");
     let email = localStorage.getItem("resumeEmail");
-    let emailValidation = localStorage.getItem("resumeEmailValidation");
     let resumeEmail = document.getElementById("resumeEmail");
     let envelopeIcon = document.getElementById("envelopeIcon");
-    emailInput.value = email;
+    if (emailInput) {
+        emailInput.value = email;
+    }
     resumeEmail.innerHTML = email;
-    if (emailValidation) {
+    if (email && email.trim().length > 0) {
         envelopeIcon.style.display = "block";
     }
 }
