@@ -4,7 +4,6 @@
 
 .resume-name {
     color: #F93B1D;
-    font-weight: 900;
     font-size: 34px;
 }
 
@@ -15,24 +14,24 @@
 
 .resume-contanct {
     font-size: 18px;
-    font-weight: 400;
 }
 
 #resumeAboutMeTitle {
     display: none;
     color: #F93B1D;
     font-size: 18px;
-    font-weight: 700;
 }
 
 #resumeAboutMe {
     font-size: 16px;
-    font-weight: 400;
 }
 
 .resume-input {
     background-color: #47474711;
     width: 50%;
+    height: 100vh;
+    overflow-y: scroll;
+    height: 100vh;
 }
 
 .go-back-vector {

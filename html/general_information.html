@@ -12,6 +12,8 @@
   <script src="../static/goBack.js"></script>
   <link rel="stylesheet" href="../css/styles.css">
   <link rel="stylesheet" href="../css/general_information.css">
+  <link href="../css/main.min.css" rel="stylesheet" />
+
   <link rel="icon" type="image/png" href="../media/LOGO-12 1.png">
 </head>
 
@@ -23,47 +25,45 @@
         <img src="../media/Ellipse 1.png" alt="eclipse" class="go-back-icon" id="goBack" width="40px">
       </a>
     </div>
-    <div class="pt-5 pe-5 resume-input">
-      <form>
-        <div class="h4 pb-2 mb-4 d-flex justify-content-between resume-title" style="font-weight: 700;">
-          <div>პირადი ინფო</div>
-          <div>1/3</div>
+    <div class="pt-5 pe-5 p-3 d-flex flex-column resume-input">
+      <div class="h4 pb-2 d-flex justify-content-between resume-title">
+        <div>პირადი ინფო</div>
+        <div>1/3</div>
+      </div>
+      <div class="row mb-4 mt-3 g-3">
+        <div class="col">
+          <label for="nameInput" class="form-label">სახელი</label>
+          <input type="text" id="nameInput" class="form-control form-control-lg" placeholder="ანზორ" aria-label="First name">
+          <div class="form-text">მინიმუმ ორი ასო, ქართული ასოები.</div>
         </div>
-        <div class="row mb-4 g-3">
-          <div class="col">
-            <label for="nameInput" class="form-label">სახელი</label>
-            <input type="text" id="nameInput" class="form-control" placeholder="ანზორ" aria-label="First name">
-            <div class="form-text">მინიმუმ ორი ასო, ქართული ასოები.</div>
-          </div>
-          <div class="col">
-            <label for="lastNameInput" class="form-label">გვარი</label>
-            <input type="text" id="lastNameInput" class="form-control" placeholder="მუმლაძე" aria-label="Last name">
-            <div class="form-text">მინიმუმ ორი ასო, ქართული ასოები</div>
-          </div>
+        <div class="col">
+          <label for="lastNameInput" class="form-label">გვარი</label>
+          <input type="text" id="lastNameInput" class="form-control form-control-lg" placeholder="მუმლაძე" aria-label="Last name">
+          <div class="form-text">მინიმუმ ორი ასო, ქართული ასოები</div>
         </div>
-        <div class="mb-4">
-          <label for="formFile" class="form-label">პირადი ფოტოს ატვირთვა</label>
-          <input class="form-control" type="file" id="formFile" required>
-        </div>
-        <div class="mb-4">
-          <label for="aboutMeInput" class="form-label">ჩემ შესახებ (არასავალდებულო)</label>
-          <textarea class="form-control" id="aboutMeInput" rows="3" placeholder="ზოგადი ინფო შენ შესახებ"></textarea>
-        </div>
-        <div class="mb-4">
-          <label for="emailInput" class="form-label">ელ. ფოსტა</label>
-          <input type="email" class="form-control" id="emailInput" placeholder="anzormumladze@redberry.ge" />
-          <div class="form-text">უნდა მთავრდებოდეს @redberry.ge-ით</div>
-        </div>
-        <div class="mb-5">
-          <label for="telInput" class="form-label">მობილურის ნომერი</label>
-          <input type="tel" class="form-control" id="telInput" placeholder="+995 551 12 34 56" />
-          <div class="form-text">უნდა აკმაყოფილებდეს ქართული მობილური ნომერის ფორმატს.</div>
-        </div>
-        <div class="d-flex justify-content-end" id="submit">
-          <a href="./experience.html" class="btn btn-primary next-button" id="toExperienceButton" role="button"
-            aria-pressed="true">შემდეგი</a>
-        </div>
-      </form>
+      </div>
+      <div class="mb-4">
+        <label for="formFile" class="form-label">პირადი ფოტოს ატვირთვა</label>
+        <input class="form-control form-control-lg" type="file" id="formFile" required>
+      </div>
+      <div class="mb-4">
+        <label for="aboutMeInput" class="form-label">ჩემ შესახებ (არასავალდებულო)</label>
+        <textarea class="form-control form-control-lg" id="aboutMeInput" rows="3" placeholder="ზოგადი ინფო შენ შესახებ"></textarea>
+      </div>
+      <div class="mb-4">
+        <label for="emailInput" class="form-label">ელ. ფოსტა</label>
+        <input type="email" class="form-control form-control-lg" id="emailInput" placeholder="anzormumladze@redberry.ge" />
+        <div class="form-text">უნდა მთავრდებოდეს @redberry.ge-ით</div>
+      </div>
+      <div class="mb-5">
+        <label for="telInput" class="form-label">მობილურის ნომერი</label>
+        <input type="tel" class="form-control form-control-lg" id="telInput" placeholder="+995 551 12 34 56" />
+        <div class="form-text">უნდა აკმაყოფილებდეს ქართული მობილური ნომერის ფორმატს.</div>
+      </div>
+      <div class="d-flex justify-content-end mt-auto mb-5" id="submit">
+        <a href="./experience.html" class="btn btn-primary next-button" id="toExperienceButton" role="button"
+          aria-pressed="true">შემდეგი</a>
+      </div>
     </div>
     <div class="p-5">
       <div class="d-flex resume">

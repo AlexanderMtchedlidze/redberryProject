@@ -32,6 +32,8 @@
 
     <!-- DatePicker function -->
     <script src="../static/datepicker.js"></script>
+
+    <script src="../static/experience.js"></script>
 </head>
 
 <body id="bootstrap-overrides">
@@ -42,45 +44,43 @@
                 <img src="../media/Ellipse 1.png" alt="eclipse" class="go-back-icon" id="goBack" width="40px">
             </a>
         </div>
-        <div class="pt-5 pe-5 resume-input">
-            <form>
-                <div class="h4 pb-2 mb-4 d-flex justify-content-between resume-title">
-                    <div>გამოცდილება</div>
-                    <div>2/3</div>
+        <div class="pt-5 pe-5 ps-3 resume-input d-flex flex-column" style="height: 100vh;">
+            <div class="h4 pb-2 mb-4 d-flex justify-content-between resume-title">
+                <div>გამოცდილება</div>
+                <div>2/3</div>
+            </div>
+            <div class="mb-4 mt-4">
+                <label for="positionInput" class="form-label">თანამდებობა</label>
+                <input type="text" id="positionInput" class="form-control form-control-lg" placeholder="დეველოპერი, დიზაინერი, ა.შ."
+                    aria-label="Position">
+                <div class="form-text">მინიმუმ ორი სიმბოლო</div>
+            </div>
+            <div class="mb-4">
+                <label for="employerInput" class="form-label">დამსაქმებელი</label>
+                <input type="text" class="form-control form-control-lg" id="employerInput" placeholder="დამსაქმებელი" />
+                <div class="form-text">მინიმუმ ორი სიმბოლო</div>
+            </div>
+            <div class="row mb-4">
+                <div class="col">
+                    <label for="date">დაწყების რიცხვი</label>
+                    <input type="text" class="form-control date form-control-lg" id="startDate" placeholder="mm / dd / yyyy">
                 </div>
-                <div class="mb-4">
-                    <label for="positionInput" class="form-label">თანამდებობა</label>
-                    <input type="text" id="positionInput" class="form-control" placeholder="დეველოპერი, დიზაინერი, ა.შ."
-                        aria-label="Position">
-                    <div class="form-text">მინიმუმ ორი სიმბოლო</div>
+                <div class="col">
+                    <label for="date">დამთავრების რიცხვი</label>
+                    <input type="text" class="form-control date form-control-lg" id="endDate" placeholder="mm / dd / yyyy">
                 </div>
-                <div class="mb-4">
-                    <label for="employerInput" class="form-label">დამსაქმებელი</label>
-                    <input type="text" class="form-control" id="employerInput" placeholder="დამსაქმებელი" />
-                    <div class="form-text">მინიმუმ ორი სიმბოლო</div>
-                </div>
-                <div class="row mb-4">
-                    <div class="col">
-                        <label for="date">დაწყების რიცხვი</label>
-                        <input type="text" class="form-control date" id="startDate" placeholder="mm / dd / yyyy">
-                    </div>
-                    <div class="col">
-                        <label for="date">დამთავრების რიცხვი</label>
-                        <input type="text" class="form-control date" id="endDate" placeholder="mm / dd / yyyy">
-                    </div>
-                </div>
-                <div class="mb-4">
-                    <label for="positionDescription" class="form-label">აღწერა</label>
-                    <textarea class="form-control" id="positionDescription" rows="3"
-                        placeholder="როლი თანამდებობაზე და ზოგადი აღწერა"></textarea>
-                </div>
-                <div class="d-flex justify-content-between" id="submit">
-                    <a href="general_information.html" class="btn btn-primary next-button" id="toExperienceButton"
-                        role="button" aria-pressed="true">უკან</a>
-                    <a href="education.html" class="btn btn-primary next-button" id="toExperienceButton" role="button"
-                        aria-pressed="true">შემდეგი</a>
-                </div>
-            </form>
+            </div>
+            <div class="mb-4">
+                <label for="positionDescription" class="form-label">აღწერა</label>
+                <textarea class="form-control form-control-lg" id="positionDescription" rows="3"
+                    placeholder="როლი თანამდებობაზე და ზოგადი აღწერა"></textarea>
+            </div>
+            <div class="d-flex justify-content-between mt-auto mb-5" id="submit">
+                <a href="general_information.html" class="btn btn-primary next-button" id="toExperienceButton"
+                    role="button" aria-pressed="true">უკან</a>
+                <a href="education.html" class="btn btn-primary next-button" id="toExperienceButton" role="button"
+                    aria-pressed="true">შემდეგი</a>
+            </div>
         </div>
         <div class="p-5">
             <div class="d-flex resume">
